@@ -17,7 +17,3 @@ and Department fields and "Istanbul, Turkey" in the Location field.
 
 5- Verify that clicking the "View Role" button redirects to the Lever Application form page.
 
-
-#araştırılacak konular
-for döngüsü ile tab'ler gezilecek ve sayısı bir değişkende tutulacak ve bu sayı kadar yön tuşlarına basılacak.
-elementlerin textlerini döndür.
