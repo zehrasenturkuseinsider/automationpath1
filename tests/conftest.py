@@ -14,6 +14,7 @@ def driver(request):
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--disable-extensions")
     options.add_argument("--disable-notifications")
+    options.add_argument("--window-size=1920,1080")
     options.add_argument("--disable-infobars")
 
     if os.getenv("CI") == "true":
