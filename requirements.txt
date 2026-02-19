@@ -4,4 +4,4 @@ selenium
 webdriver-manager
 requests
 pytest-xdist
-allure
+allure-pytest
