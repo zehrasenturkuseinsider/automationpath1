@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
+import os
 from config.config import Config
 
 
@@ -15,6 +15,10 @@ def driver(request):
     options.add_argument("--disable-extensions")
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-infobars")
+
+    if os.getenv("CI") == "true":
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
 
     if Config.HEADLESS:
         options.add_argument("--headless=new")

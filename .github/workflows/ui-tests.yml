@@ -26,6 +26,7 @@ jobs:
       - name: Run Tests
         run: |
           export PYTHONPATH=$PYTHONPATH:.
+          export HEADLESS=True
           pytest --html=report.html --self-contained-html
 
       - name: Upload Test Report

@@ -1,3 +1,4 @@
+import os
 class Config:
     """Project configuration"""
 
@@ -11,7 +12,7 @@ class Config:
 
     # Browser
     BROWSER = "chrome"
-    HEADLESS = False
+    HEADLESS = os.getenv("HEADLESS", "False") == "True"
 
     # Career Page
     CAREER_PAGE = "https://insiderone.com/careers/"
