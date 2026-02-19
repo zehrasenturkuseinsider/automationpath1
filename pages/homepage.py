@@ -28,4 +28,7 @@ class HomePage(BasePage):
             raise Exception(f"HomePage açılamadı. Current URL: {current_url}")
 
     def go_to_career_page(self):
+        self.driver.save_screenshot("before_click.png")
+        print("Current URL:", self.driver.current_url)
+        print("Page title:", self.driver.title)
         self.safe_click(self.WE_ARE_HIRING_LINK)
