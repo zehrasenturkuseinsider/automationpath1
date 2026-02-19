@@ -1,4 +1,3 @@
-import driver
 from selenium.webdriver.common.by import By
 from config.config import Config
 from pages.base_page import BasePage
