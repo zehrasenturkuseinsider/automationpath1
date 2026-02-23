@@ -8,7 +8,7 @@ class HomePage(BasePage):
 
     # Locators
     COOKIE = (By.ID, "wt-cli-accept-all-btn")
-    WE_ARE_HIRING_LINK = (By.CSS_SELECTOR, "#footer > div.footer-wrapper > div > div > div.row > div:nth-child(3) > div > div:nth-child(5) > div > div.footer-links-col-item-body > a:nth-child(6)")
+    WE_ARE_HIRING_LINK = (By.CSS_SELECTOR, "a[data-text=\"We're hiring\"]")
 
     def __init__(self, driver):
         super().__init__(driver)
