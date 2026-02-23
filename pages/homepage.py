@@ -34,4 +34,4 @@ class HomePage(BasePage):
         self.driver.save_screenshot("before_click.png")
         print("Current URL:", self.driver.current_url)
         print("Page title:", self.driver.title)
-        self.safe_click(self.WE_ARE_HIRING_LINK)
+        self.safe_click(self.WE_ARE_HIRING_LINK, 30, True)
