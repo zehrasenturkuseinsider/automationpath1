@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.expected_conditions import element_to_be_clickable
 from selenium.webdriver.support.wait import WebDriverWait
 from config.config import Config
+import time
 
 
 class BasePage:
@@ -106,15 +107,19 @@ class BasePage:
 
     def safe_click(self, locator, timeout=30, scroll=True):
         wait = WebDriverWait(self.driver, timeout)
-        # 1) İlk bekleme
+
         element = wait.until(EC.presence_of_element_located(locator))
-        # 2) Scroll
+
         if scroll:
-            self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", element)
-            self.driver.execute_script("window.scrollBy(0, -120);")
-        # 3) Clickable bekle (overlay/animasyon için)
-        element = wait.until(EC.element_to_be_clickable(locator))
-        # 4) Normal click dene, intercept olursa JS fallback + retry
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(1)
+
+            self.driver.execute_script(
+                "arguments[0].scrollIntoView({block:'center'});",
+                element
+            )
+            time.sleep(0.5)
+
         try:
             element.click()
         except (ElementClickInterceptedException, StaleElementReferenceException):

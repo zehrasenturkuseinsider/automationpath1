@@ -38,10 +38,10 @@ class CareerPage(BasePage):
 
 
     def click_right_arrow(self):
-        self.safe_click(self.RIGHT_ARROW)
+        self.safe_click(self.RIGHT_ARROW, 30, True)
 
     def click_left_arrow(self):
-        self.safe_click(self.LEFT_ARROW)
+        self.safe_click(self.LEFT_ARROW, 30, True)
 
     def swipe_locations_to_right(self):
         tab_count = self.get_location_tab_count()
