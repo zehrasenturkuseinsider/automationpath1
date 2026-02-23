@@ -12,7 +12,6 @@ class Config:
 
     # Browser
     BROWSER = "chrome"
-    HEADLESS = os.getenv("HEADLESS", "False") == "True"
 
     # Career Page
     CAREER_PAGE = "https://insiderone.com/careers/"
