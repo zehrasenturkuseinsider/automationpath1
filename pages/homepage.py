@@ -18,7 +18,7 @@ class HomePage(BasePage):
             cookie_btn = self.wait_for_element_clickable(self.COOKIE,timeout=Config.IMPLICIT_WAIT)
             cookie_btn.click()
         except Exception:
-            pass
+            print("Cookie not accepted")
 
     def homepage_verify(self):
         current_url = self.get_current_url()
