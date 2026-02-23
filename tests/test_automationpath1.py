@@ -12,6 +12,7 @@ class TestautomationPath1:
     def test_insider_career_flow(self, driver):
         home_page = HomePage(driver)
         home_page.accept_cookies()
+        time.sleep(5)
         home_page.homepage_verify()
         home_page.go_to_career_page()
 

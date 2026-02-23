@@ -121,6 +121,7 @@ class BasePage:
             element = wait.until(EC.presence_of_element_located(locator))
             self.driver.execute_script("arguments[0].click();", element)
 
+
     def element_count(self, locator, timeout=30):
         WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
         return len(self.driver.find_elements(*locator))
