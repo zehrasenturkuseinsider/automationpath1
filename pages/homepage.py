@@ -1,3 +1,4 @@
+import pytest
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from config.config import Config
@@ -17,8 +18,10 @@ class HomePage(BasePage):
         try:
             cookie_btn = self.wait_for_element_clickable(self.COOKIE,timeout=Config.IMPLICIT_WAIT)
             cookie_btn.click()
-        except Exception:
-            print("Cookie not accepted")
+        except Exception as e:
+            pytest.fail(f"Cookie could not be accepted! {e}")
+
+
 
     def homepage_verify(self):
         current_url = self.get_current_url()
