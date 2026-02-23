@@ -25,6 +25,9 @@ def driver(request):
         options=options
     )
 
+    driver.set_window_size(1920, 1080)  # bunu ekle
+    driver.implicitly_wait(Config.IMPLICIT_WAIT)
+
     driver.implicitly_wait(Config.IMPLICIT_WAIT)
     driver.set_page_load_timeout(Config.PAGE_LOAD_TIMEOUT)
 
