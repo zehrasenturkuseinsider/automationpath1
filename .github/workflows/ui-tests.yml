@@ -1,15 +1,12 @@
 name: UI Automation Tests
-
 on:
   pull_request:
     branches: [ main ]
   push:
     branches: [ main ]
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -22,11 +19,26 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
         with:
-            chrome-version: stable
+          chrome-version: stable
 
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+
+      - name: Debug - Check Site Response
+        run: |
+          echo "=== Runner IP ==="
+          curl -s https://ifconfig.me
+          echo ""
+          echo "=== HTTP Headers ==="
+          curl -sI https://insiderone.com/
+          echo "=== Cloudflare / Bot Check ==="
+          curl -s https://insiderone.com/ | grep -iE "captcha|challenge|blocked|forbidden|cloudflare|just a moment|attention required|ray id" || echo "Bot challenge bulunamadi"
+          echo "=== Hiring Link Check ==="
+          curl -s https://insiderone.com/ | grep -i "hiring" || echo "HIRING BULUNAMADI"
+          echo "=== Full Page Source ==="
+          curl -s https://insiderone.com/ -o debug_page_source.html
+          echo "Page source saved."
 
       - name: Run Tests
         run: |
@@ -46,4 +58,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Screenshots
-          path: .
+          path: "*.png"
+
+      - name: Upload Debug Files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Debug-Files
+          path: debug_page_source.html
