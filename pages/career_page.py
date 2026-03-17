@@ -38,10 +38,14 @@ class CareerPage(BasePage):
 
 
     def click_right_arrow(self):
-        self.safe_click(self.RIGHT_ARROW, 30, True)
+        element = self.find_element(self.RIGHT_ARROW)   
+        self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", element)
+        self.driver.execute_script("arguments[0].click();", element)
 
     def click_left_arrow(self):
-        self.safe_click(self.LEFT_ARROW, 30, True)
+        element = self.find_element(self.LEFT_ARROW)  
+        self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", element)
+        self.driver.execute_script("arguments[0].click();", element)
 
     def swipe_locations_to_right(self):
         tab_count = self.get_location_tab_count()
