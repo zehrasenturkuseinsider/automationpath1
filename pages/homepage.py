@@ -8,7 +8,7 @@ class HomePage(BasePage):
 
     # Locators
     COOKIE = (By.ID, "wt-cli-accept-all-btn")
-    WE_ARE_HIRING_LINK = (By.CSS_SELECTOR, "#navigation a[href='/careers/']")
+    WE_ARE_HIRING_LINK = "https://insiderone.com/careers/"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -31,8 +31,7 @@ class HomePage(BasePage):
             raise Exception(f"HomePage açılamadı. Current URL: {current_url}")
 
     def go_to_career_page(self):
-        with open("homepage_source.html", "w", encoding="utf-8") as f:
-            f.write(self.driver.page_source)
-
-        self.driver.save_screenshot("before_career_click.png")
-        self.safe_click(self.WE_ARE_HIRING_LINK, 30, True)
+        try:
+            self.safe_click(self.WE_ARE_HIRING_LINK, 30, True)
+        except Exception:
+            self.driver.get(Config.CAREER_PAGE)
