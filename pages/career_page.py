@@ -38,12 +38,12 @@ class CareerPage(BasePage):
 
 
     def click_right_arrow(self):
-        element = self.find_element(self.RIGHT_ARROW)   
+        element = self.driver.find_element(*self.RIGHT_ARROW)
         self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", element)
         self.driver.execute_script("arguments[0].click();", element)
 
     def click_left_arrow(self):
-        element = self.find_element(self.LEFT_ARROW)  
+        element = self.find_element(*self.LEFT_ARROW)  
         self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", element)
         self.driver.execute_script("arguments[0].click();", element)
 
